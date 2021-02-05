@@ -15,4 +15,16 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def friendship_button(user)
+     if !current_user.friends?(user) && current_user.id != user.id 
+      if current_user.pending_friends?(user)
+        content_tag :span, "Request sent"
+        
+      else
+        link_to('Invite friendship', friendships_path(user: user), method: :post )
+      end
+     end
+  end
+
 end

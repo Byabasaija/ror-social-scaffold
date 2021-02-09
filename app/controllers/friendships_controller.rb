@@ -1,12 +1,8 @@
 class FriendshipsController < ApplicationController
   def create
-    @friend_requests = current_user.inverse_friendships.build(user_id: params[:user])
+    current_user.friends << User.find(params[:user])
 
-    if @friend_requests.save
-      flash[:notice] = 'Request sent'
-    else
-      flash[:alert] = 'Error while sending request'
-    end
+    flash[:notice] = 'Request sent'
     redirect_to users_path
   end
 
@@ -25,6 +21,6 @@ class FriendshipsController < ApplicationController
   end
 
   def index
-    @pending_requests = current_user.pending_friends
+    @pending_requests = current_user.friends
   end
 end

@@ -19,12 +19,14 @@ module ApplicationHelper
   def friendship_button(user)
     return unless !current_user.friends?(user) && current_user.id != user.id
 
-    if current_user.request_sent?(user)
-      content_tag :span, 'Request sent'
-    elsif current_user.request_received?(user)
-      content_tag :span, 'Request received'
-    else
-      link_to('Invite friendship', friendships_path(user: user), method: :post)
-    end
+    link_to('Invite friendship', friendships_path(user: user), method: :post)
+
+    # if current_user.request_sent?(user)
+    #   content_tag :span, 'Request sent'
+    # elsif current_user.request_received?(user)
+    #   content_tag :span, 'Request received'
+    # else
+    #   link_to('Invite friendship', friendships_path(user: user), method: :post)
+    # end
   end
 end

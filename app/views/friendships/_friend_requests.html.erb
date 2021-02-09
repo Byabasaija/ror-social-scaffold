@@ -1,0 +1,8 @@
+<li>
+  Name: <%= user.name %>
+  <span class="profile-link">
+    <%= link_to 'Accept',  accept_friendship_path(user), method: :post, class: 'btn btn-primary' %>
+    <%= link_to 'Reject', reject_friendship_path(user), method: :post, class: 'btn btn-danger' %>
+
+  </span>
+</li>

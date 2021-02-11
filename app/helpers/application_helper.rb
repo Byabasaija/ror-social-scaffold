@@ -18,7 +18,7 @@ module ApplicationHelper
 
   def friendship_button(user)
     return unless !current_user.friends?(user) && current_user.id != user.id && !current_user.friend_requests?(user)
-    
+
     link_to('Invite friendship', friend_requests_path(user: user), method: :post)
 
     # if current_user.request_sent?(user)

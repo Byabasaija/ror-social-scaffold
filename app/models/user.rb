@@ -15,12 +15,13 @@ class User < ApplicationRecord
   has_many :friend_requests_as_receiver, foreign_key: :receiver_id, class_name: 'FriendRequest'
 
   def confirm_friend(user)
-    self.friends << user
+    friends << user
   end
 
   def friend_requests?(user)
-    self.friend_requests_as_receiver.find_by(sender:user) || self.friend_requests_as_sender.find_by(receiver:user)
+    friend_requests_as_receiver.find_by(sender: user) || friend_requests_as_sender.find_by(receiver: user)
   end
+
   def friends?(user)
     friends.include?(user)
   end

@@ -20,13 +20,11 @@ module ApplicationHelper
     return unless !current_user.friends?(user) && current_user.id != user.id && !current_user.friend_requests?(user)
 
     link_to('Invite friendship', friend_requests_path(user: user), method: :post)
+  end
 
-    # if current_user.request_sent?(user)
-    #   content_tag :span, 'Request sent'
-    # elsif current_user.request_received?(user)
-    #   content_tag :span, 'Request received'
-    # else
-    #   link_to('Invite friendship', friendships_path(user: user), method: :post)
-    # end
+  def unfriend_btn(user)
+      if current_user.friends?(user) && current_user.id != user.id
+      link_to('Ufriend', friendship_path(id: user.id), method: :delete)
+      end
   end
 end

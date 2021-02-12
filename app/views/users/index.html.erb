@@ -1,5 +1,25 @@
 <section class="users-section">
-  <ul class="users-list">
-    <%= render @users %>
-  </ul>
+  <div class="users-list container">
+    <div class="row">
+      <div class="col"><h2>Pending requests</h2></div>
+    </div>
+    <div class="row">
+      <% @pending_requests.each do |user| %>
+        <%= render 'friend_requests', user: user.sender %>
+      <% end %>
+
+      <div class="col">
+        <%= no_pending_requests(@pending_requests) %>
+      </div>
+      </div>
+  </div>
+
+  <div class="users-list container mt-4">
+    <div class="row">
+      <div class="col"><h2>All users</h2></div>
+    </div>
+    <div class="row">
+      <%= render @users %>
+      </div>
+  </div>
 </section>

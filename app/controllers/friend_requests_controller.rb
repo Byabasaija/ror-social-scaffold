@@ -14,17 +14,13 @@ class FriendRequestsController < ApplicationController
     current_user.confirm_friend(user)
     flash[:notice] = "You have accepted the friendship request with #{user.name}"
     current_user.friend_requests_as_receiver.find_by(sender: user).destroy
-    redirect_to friend_requests_path
+    redirect_to users_path
   end
 
   def reject
     user = User.find(params[:id])
     flash[:notice] = "You have rejected the friendship request with #{user.name}"
     current_user.friend_requests_as_receiver.find_by(sender: user).destroy
-    redirect_to friend_requests_path
-  end
-
-  def index
-    @pending_requests = current_user.friend_requests_as_receiver
+    redirect_to users_path
   end
 end

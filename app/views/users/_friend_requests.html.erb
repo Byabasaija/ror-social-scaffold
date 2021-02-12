@@ -3,10 +3,8 @@
     <div class="card-body">
       <h5 class="card-title d-inline-block">Name: <%= user.name %></h5>
       <div class="links ml-4 d-inline-block">
-        <%= link_to 'See Profile',  user_path(user), class: 'card-link' %>
-        <%= friendship_button(user) %>
-        <%= unfriend_btn(user) %>
-        <%= pending_status(user) %>
+        <%= link_to 'Accept',  accept_friend_request_path(user), method: :post, class: 'btn btn-primary' %>
+        <%= link_to 'Reject', reject_friend_request_path(user), method: :post, class: 'btn btn-danger' %>
       </div>
     </div>
   </div>

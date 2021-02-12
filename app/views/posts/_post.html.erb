@@ -5,12 +5,27 @@
     </div>
     <div class='post-liking'>
       <span class='post-date'> <%= post.created_at.strftime("%Y/%m/%d") %> </span>
-      <%= like_or_dislike_btn(post) %>
+
     </div>
   </div>
   <p class="post-content">
     <%= post.content %>
   </p>
+
+  <div>
+    <p>
+      <%= like_or_dislike_btn(post) %>
+      <span class="ml-3 badge badge-pill badge-primary">
+        <%= post.likes.count %>
+        <%= 'like'.pluralize(post.likes.count) %>
+      </span>
+
+      <span class="badge badge-pill badge-info">
+        <%= post.comments.count %>
+        <%= 'comment'.pluralize(post.likes.count) %>
+      </span>
+    </p>
+  </div>
 
   <div class='post-comments-section'>
     <%= render partial: 'comments/comment', collection: post.comments %>

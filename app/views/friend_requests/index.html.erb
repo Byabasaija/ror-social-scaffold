@@ -1,6 +1,0 @@
-<h1>list of friend requests.</h1>
-<ul>
-<% @pending_requests.each do |user| %>
-  <%= render 'friend_requests', user: user.sender %>
-<% end %>
-</ul>

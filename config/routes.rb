@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
 
   end
-  resources :friend_requests, only: [:create, :index] do
+  resources :friend_requests, only: [:create] do
     post 'accept', on: :member
     post 'reject', on: :member
   end

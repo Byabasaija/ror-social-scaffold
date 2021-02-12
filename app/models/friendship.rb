@@ -22,7 +22,7 @@ class Friendship < ApplicationRecord
     inverses.destroy_all
   end
 
-  def inverses 
+  def inverses
     self.class.where(inverse_friendship_options)
   end
 end

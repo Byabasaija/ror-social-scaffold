@@ -23,8 +23,8 @@ module ApplicationHelper
   end
 
   def unfriend_btn(user)
-      if current_user.friends?(user) && current_user.id != user.id
-      link_to('Ufriend', friendship_path(id: user.id), method: :delete)
-      end
+    return unless current_user.friends?(user) && current_user.id != user.id
+
+    link_to('Ufriend', friendship_path(id: user.id), method: :delete)
   end
 end
